@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.17
+targetCompatibility = 1.17
+
+dependencies {
+    implementation "joda-time:joda-time:2.2"
+}
+
+jar {
+    archiveBaseName = 'my-hello-test'
+    archiveVersion =  '0.1.0'
+}
