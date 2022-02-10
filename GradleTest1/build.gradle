@@ -17,7 +17,7 @@ dependencies {
 
 jar {
     archiveBaseName = "${project.archives_base_name}"
-    archiveVersion = "${project.version}"
+    archiveVersion = "${project.version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}"
 }
 
 publishing {
