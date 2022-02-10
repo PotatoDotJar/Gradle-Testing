@@ -1,17 +1,23 @@
-apply plugin: 'java'
 
-repositories {
-    mavenCentral()
-}
+allprojects {
+	
+	apply plugin: 'java'
+	apply plugin: 'maven-publish'
+	
+	def ENV = System.getenv()
 
-sourceCompatibility = 1.17
-targetCompatibility = 1.17
+	
+	version = "1.0.0"
+	group = "my.root.group"
+	archivesBaseName = "gradletesting"
+	
+	sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = 17
+	
+	repositories {
+		
+	}
 
-dependencies {
-    implementation "joda-time:joda-time:2.2"
-}
-
-jar {
-    archiveBaseName = 'my-hello-test'
-    archiveVersion =  '0.1.0'
+	java {
+		withSourcesJar()
+	}
 }

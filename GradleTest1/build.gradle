@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+def ENV = System.getenv()
+
+logger.info("${rootProject.name}")
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = 17
+
+dependencies {
+    implementation "joda-time:joda-time:2.2"
+}
+
+jar {
+    archiveBaseName = "${project.archives_base_name}"
+    archiveVersion = "${project.version}"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "${project.maven_group}"
+            artifactId = "${project.archives_base_name}"
+            version = "${project.version}"
+            from components.java
+        }
+    }
+	repositories {
+		maven {
+            url "https://maven.rmnad.net/testing"
+            credentials {
+                username = "github"
+                password = "${ENV.MAVEN_SECRET}"
+            }
+        }
+	}
+}
