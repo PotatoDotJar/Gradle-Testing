@@ -21,8 +21,10 @@ jobs:
           java-version: '17'
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
+        working-directory: GradleTest1
       - name: Build and Publish with Gradle
         uses: gradle/gradle-build-action@v2
+        working-directory: GradleTest1
         env:
           MAVEN_SECRET: ${{ secrets.MAVEN_SECRET }}
         with:

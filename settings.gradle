@@ -1,3 +1,0 @@
-include "GradleTest1"
-
-rootProject.name = "Gradle-Testing-1.0.0"
